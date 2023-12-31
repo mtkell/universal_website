@@ -87,25 +87,6 @@ services:
     # networks:
     #   - npm
 
-  pma:
-    image: phpmyadmin/phpmyadmin
-    container_name: pma
-    restart: unless-stopped
-    environment:
-      # https://docs.phpmyadmin.net/en/latest/setup.html#docker-environment-variables
-      PMA_HOST: db
-      PMA_PORT: 3306
-      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
-      UPLOAD_LIMIT: 50M
-      VIRTUAL_HOST: "${PMA_HOST}"
-      LETSENCRYPT_HOST: "${PMA_HOST}"
-    ports:
-      - 8081:8081
-    depends_on:
-      - db
-    # networks:
-    #   - npm
-
   db:
     image: mysql:latest
     container_name: wordpressdb
